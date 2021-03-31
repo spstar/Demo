@@ -4,20 +4,14 @@ import './App.css';
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <form action="http://hello.com/post/data" method="post" target="cross-post">
+        <input type="text"/>
+        <input type="textarea"/>
+        <input type="radio"/>
+        <input type="checkbox"/>
+        <button type="submit">提交</button>
+      </form>
+        <iframe name="cross-post"  frameborder="0"></iframe>
     </div>
   );
 }
