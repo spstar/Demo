@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 
-import createStore, {SubscribeState} from './store';
+import {SubscribeState} from './store';
 
 export const themes = {
     light: {
