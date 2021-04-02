@@ -19,8 +19,7 @@
   },
   "eslintConfig": {
     "extends": [
-      "react-app",
-      "react-app/jest"
+      "wesbos"
     ]
   },
   "browserslist": {
@@ -34,5 +33,14 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "eslint-config-airbnb": "^18.2.1",
+    "eslint-config-prettier": "^7.2.0",
+    "eslint-config-wesbos": "^1.0.1",
+    "eslint-plugin-html": "^6.1.2",
+    "eslint-plugin-prettier": "^3.3.1",
+    "install-peerdeps": "^3.0.3",
+    "prettier": "^2.2.1"
   }
 }

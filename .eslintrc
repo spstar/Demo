@@ -1,7 +1,5 @@
 {
-  "extends": [
-    "wesbos"
-  ],
+  "extends": ["wesbos"],
   "rules": {
     "no-console": 2,
     "prettier/prettier": [
@@ -9,8 +7,8 @@
       {
         "trailingComma": "es5",
         "singleQuote": true,
-        "printWidth": 120,
-        "tabWidth": 8
+        "printWidth": 80,
+        "tabWidth": 2
       }
     ]
   }
