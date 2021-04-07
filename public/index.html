@@ -3,7 +3,18 @@
   <head>
     <meta charset="utf-8" />
     <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width" />
+    <!-- <meta name="viewport" content=" initial-scale=1" /> -->
+    <script>
+      /* eslint-disable */
+      var initScale = 1 / window.devicePixelRatio;
+      var metaEl = document.createElement('meta');
+
+      metaEl.name = 'viewport';
+      metaEl.content = 'initial-scale=' + 1 / window.devicePixelRatio;
+
+      document.head.appendChild(metaEl);
+    </script>
     <meta name="theme-color" content="#000000" />
     <meta
       name="description"

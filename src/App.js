@@ -1,8 +1,17 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
+const someObj = {
+  a: 100,
+  b: 200,
+  eh: `${222}`
+};
 function App() {
+  useEffect(() => {
+    alert(devicePixelRatio);
+  }, []);
+
   return (
     <div className="App">
       <header className="App-header">
@@ -10,15 +19,12 @@ function App() {
         <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <ul>
+          <li>hello lolk at the 1px width;</li>
+          <li>hello lolk at the 2px width;</li>
+        </ul>
       </header>
+      <div style={{ border: '1px solid green', width: '100%', fontSize: 20 }} />
     </div>
   );
 }
