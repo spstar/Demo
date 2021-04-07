@@ -1,5 +1,5 @@
-import React, {useReducer} from 'react';
-import {get as _get} from 'lodash';
+import React, { useReducer } from 'react';
+import { get as _get } from 'lodash';
 
 let RegisterState, SubscribeState, RegisterStore;
 /**
@@ -26,54 +26,58 @@ let RegisterState, SubscribeState, RegisterStore;
  *  }
  */
 (function createStore() {
-    let
-        stateLib = {init: [{}, () => void 0]},
-        dispatchChainMap = {};
+  let stateLib = { init: [{}, () => void 0] },
+    dispatchChainMap = {};
 
-    RegisterState = function RegisterState({name, reducer, initValue, init}) {
-        console.log('reducer', typeof reducer);
-        let reducerIns = useReducer(reducer, initValue, init);
-        const isNeedUpdate = !Object.is(reducerIns[0], _get(stateLib, `${name}[0]`));
+  RegisterState = function RegisterState({ name, reducer, initValue, init }) {
+    console.log('reducer', typeof reducer);
+    let reducerIns = useReducer(reducer, initValue, init);
+    const isNeedUpdate = !Object.is(
+      reducerIns[0],
+      _get(stateLib, `${name}[0]`)
+    );
 
-        stateLib[name] = reducerIns;
-        // 更新所有订阅的组件；
-        ((isNeedUpdate && dispatchChainMap[name]) || [])
-            .forEach(
-                dispatch =>
-                    Promise.resolve().then(() => dispatch(_get(stateLib, `${name}[0]`)))
-            );
+    stateLib[name] = reducerIns;
+    // 更新所有订阅的组件；
+    ((isNeedUpdate && dispatchChainMap[name]) || []).forEach((dispatch) =>
+      Promise.resolve().then(() => dispatch(_get(stateLib, `${name}[0]`)))
+    );
 
-        return null;
-    };
-    RegisterStore = function RegisterStore({states}) {
-        return (<>{states.map(it => <RegisterState key={it.name} {...it} />)}</>);
-    };
+    return null;
+  };
+  RegisterStore = function RegisterStore({ states }) {
+    return (
+      <>
+        {states.map((it) => (
+          <RegisterState key={it.name} {...it} />
+        ))}
+      </>
+    );
+  };
 
-    SubscribeState = function subscribeState(name, dispatch, subscribe = true) {
-        console.log(dispatch);
-        if (typeof dispatch !== 'function') {
-            throw new Error('The "dispatch" argument of the second must be a function');
-        }
+  SubscribeState = function subscribeState(name, dispatch, subscribe = true) {
+    console.log(dispatch);
+    if (typeof dispatch !== 'function') {
+      throw new Error(
+        'The "dispatch" argument of the second must be a function'
+      );
+    }
 
-        if (!subscribe) {
-            dispatchChainMap[name] = dispatchChainMap[name].filter(it => it !== dispatch);
+    if (!subscribe) {
+      dispatchChainMap[name] = dispatchChainMap[name].filter(
+        (it) => it !== dispatch
+      );
 
-            return void 0;
-        }
+      return void 0;
+    }
 
-        dispatchChainMap[name]
-            ? !dispatchChainMap[name].includes(dispatch) && dispatchChainMap[name].push(dispatch)
-            : (dispatchChainMap[name] = [dispatch]);
+    dispatchChainMap[name]
+      ? !dispatchChainMap[name].includes(dispatch) &&
+        dispatchChainMap[name].push(dispatch)
+      : (dispatchChainMap[name] = [dispatch]);
 
-        return stateLib[name];
-    };
+    return stateLib[name];
+  };
 })();
 
-export {
-    RegisterState,
-    RegisterStore,
-    SubscribeState
-};
-
-
-
+export { RegisterState, RegisterStore, SubscribeState };
