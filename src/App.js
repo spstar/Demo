@@ -20,10 +20,10 @@ function getToggleThemeAlg(theme) {
 }
 
 function App() {
-  let [theme, setTheme] = useState(ThemeLib[0]);
+  const [theme, setTheme] = useState(ThemeLib[0]);
 
   function toggleTheme() {
-    let currTheme = getToggleThemeAlg(theme);
+    const currTheme = getToggleThemeAlg(theme);
 
     console.log('当前要设置的theme：', currTheme);
     setTheme(currTheme);
@@ -36,10 +36,12 @@ function App() {
       <RegisterStore
         states={[{ name: 'theme', reducer, initValue: 'light' }]}
       />
-      {/*<RegisterState name="theme" reducer={reducer} initValue="light" />*/}
+      {/* <RegisterState name="theme" reducer={reducer} initValue="light" /> */}
       hello
-      <ContextTest theme={theme} signedInUser={'admin'} />
-      <button onClick={toggleTheme}>更改样式</button>
+      <ContextTest theme={theme} signedInUser="admin" />
+      <button type="button" onClick={toggleTheme}>
+        更改样式
+      </button>
       <div>------------------------------</div>
       <div>------------------------------</div>
       <ToggleTheme />
@@ -52,16 +54,20 @@ function App() {
 }
 
 function ToggleTheme() {
-  let [theme, dispatch] = SubscribeState('theme', useState(null)[1]);
+  const [theme, dispatch] = SubscribeState('theme', useState(null)[1]);
 
   function toggleTheme() {
-    let currTheme = getToggleThemeAlg(theme);
+    const currTheme = getToggleThemeAlg(theme);
 
     console.log('当前要设置的theme：', currTheme);
     dispatch({ type: 'toggleTheme', payload: currTheme });
   }
 
-  return <button onClick={toggleTheme}>更改样式使用Store</button>;
+  return (
+    <button onClick={toggleTheme} type="button">
+      更改样式使用Store
+    </button>
+  );
 }
 
 export default App;

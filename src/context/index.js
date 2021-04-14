@@ -23,7 +23,7 @@ const UserContext = React.createContext({
 
 export default class App extends React.Component {
   render() {
-    const { signedInUser, theme } = this.props;
+    const { signedInUser, theme } = this.props || {};
 
     console.log(this.props);
     // 提供初始 context 值的 App 组件

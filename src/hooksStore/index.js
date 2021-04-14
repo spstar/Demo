@@ -46,7 +46,7 @@ function Layout() {
 }
 
 function Content() {
-  let [theme] = SubscribeState('theme', useState(null)[1]);
+  const [theme] = SubscribeState('theme', useState(null)[1]);
 
   return <div style={themes[theme]}>{`------- ${theme}`}</div>;
 }
