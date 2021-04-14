@@ -3,7 +3,22 @@
   <head>
     <meta charset="utf-8" />
     <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width" />
+    <!-- <meta name="viewport" content=" initial-scale=1" /> -->
+    <script defer>
+      console.dir(
+        '在页面首部获取root DOM元素',
+        document.getElementById('root')
+      );
+      /* eslint-disable */
+      var initScale = 1 / window.devicePixelRatio;
+      var metaEl = document.createElement('meta');
+
+      metaEl.name = 'viewport';
+      metaEl.content = 'initial-scale=' + 1 / window.devicePixelRatio;
+
+      document.head.appendChild(metaEl);
+    </script>
     <meta name="theme-color" content="#000000" />
     <meta
       name="description"
@@ -14,7 +29,7 @@
       manifest.json provides metadata used when your web app is installed on a
       user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
     -->
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json.webmanifest" />
     <!--
       Notice the use of %PUBLIC_URL% in the tags above.
       It will be replaced with the URL of the `public` folder during the build.
