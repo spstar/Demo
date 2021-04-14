@@ -5,7 +5,11 @@
     <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
     <meta name="viewport" content="width=device-width" />
     <!-- <meta name="viewport" content=" initial-scale=1" /> -->
-    <script>
+    <script defer>
+      console.dir(
+        '在页面首部获取root DOM元素',
+        document.getElementById('root')
+      );
       /* eslint-disable */
       var initScale = 1 / window.devicePixelRatio;
       var metaEl = document.createElement('meta');

@@ -9,7 +9,7 @@ const someObj = {
 };
 function App() {
   useEffect(() => {
-    alert(devicePixelRatio);
+    console.log('devicePixelRatio: ', devicePixelRatio);
   }, []);
 
   return (
