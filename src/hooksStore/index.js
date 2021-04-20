@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import { SubscribeState } from './store';
+import { subscribeState } from './store';
 
 export const themes = {
   light: {
@@ -46,7 +46,7 @@ function Layout() {
 }
 
 function Content() {
-  const [theme] = SubscribeState('theme', useState(null)[1]);
+  const [theme] = subscribeState('theme', useState(null)[1]);
 
   return <div style={themes[theme]}>{`------- ${theme}`}</div>;
 }

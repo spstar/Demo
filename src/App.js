@@ -1,11 +1,10 @@
-import React, { useState } from 'react';
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import ContextTest from './context';
 import {
   RegisterState,
-  SubscribeState,
+  subscribeState,
   RegisterStore
 } from './hooksStore/store';
 import reducer from './hooksStore/reducers/theme';
@@ -21,11 +20,6 @@ function getToggleThemeAlg(theme) {
   return ThemeLib[(ThemeLib.indexOf(theme) + 1) % ThemeLib.length];
 }
 
-const someObj = {
-  a: 100,
-  b: 200,
-  eh: `${222}`
-};
 function App() {
   const [theme, setTheme] = useState(ThemeLib[0]);
 
@@ -76,7 +70,7 @@ function App() {
 }
 
 function ToggleTheme() {
-  const [theme, dispatch] = SubscribeState('theme', useState(null)[1]);
+  const [theme, dispatch] = subscribeState('theme', useState(null)[1]);
 
   function toggleTheme() {
     const currTheme = getToggleThemeAlg(theme);

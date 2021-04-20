@@ -1,7 +1,11 @@
 {
   "extends": ["wesbos"],
+  "plugins": ["react"],
   "rules": {
     "no-console": ["warn", { "allow": ["warn", "error"] }],
+    "react/prop-types": 0,
+    "react/jsx-props-no-spreading": "off",
+    "no-unused-expressions": ["error", { "allowShortCircuit": true }],
     "prettier/prettier": [
       "error",
       {
