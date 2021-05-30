@@ -4,6 +4,9 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+// 添加rrweb 录屏功能
+import './rrweb';
+
 ReactDOM.render(
   <React.StrictMode>
     <App />
