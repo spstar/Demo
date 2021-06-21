@@ -56,7 +56,8 @@ function errorProcess(res, msg) {
   res.end(JSON.stringify({ ...RESPONSE_INTERFACE, msg }));
 }
 
-function postRecordInterface(req, res) {  getPostData(req)
+function postRecordInterface(req, res) {
+  getPostData(req)
     .then((data) => {
       const currFilePath = `${baseDataPath}${data.id}`;
       const recordInfoStr = JSON.stringify(data.recordInfo);
